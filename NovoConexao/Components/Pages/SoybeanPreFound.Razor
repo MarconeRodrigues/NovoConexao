@@ -1,0 +1,87 @@
+﻿@page "/SoybeanPreFound"
+@using NovoConexao.Models
+
+<div class="widget-container">
+    <video autoplay muted loop class="bgVideo">
+        <source src="/images/bayer-video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+    </video>
+    <img src="/images/LogoBayer.png" alt="LogoBayer" style="height: calc(3em + 2.4em); float: left; margin-right: 20px; margin-top: 10px;">
+    <div style="overflow: hidden; margin-left: 10px;">
+        <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.5em; color: #FFFFFF; margin-bottom: 10px; margin-top: 0; text-align: left;">Soybean Pre Found</h1>
+        <h3 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.5em; font-weight: lighter; color: #FFFFFF; margin-bottom: 40px; margin-top: 0; text-align: left;">Produção de Soja e Algodão Latam</h3>
+    </div>
+
+    <div style="text-align: left; margin-bottom: 20px; cursor: pointer;" onclick="window.location.href='/'">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.001c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10Zm.28 14.53a.75.75 0 0 1-.976.073l-.085-.072-4-4.001a.75.75 0 0 1-.073-.977l.073-.084 4.001-4a.75.75 0 0 1 1.133.977l-.072.084-2.722 2.72h6.691a.75.75 0 0 1 .744.649L17 12a.75.75 0 0 1-.648.744l-.102.006H9.56l2.72 2.72a.75.75 0 0 1 .073.977l-.073.084Z" fill="#ffffff" />
+        </svg>
+    </div>
+
+
+
+
+    <!-- Grupos de Registros -->
+    <div class="grid-main-nome">
+        <div class="column">
+            <div class="text-container">
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4a1 1 0 1 1 0-2h4a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V5.414l-5.793 5.793a1 1 0 0 1-1.414 0L10 8.414l-5.293 5.293a1 1 0 0 1-1.414-1.414l6-6a1 1 0 0 1 1.414 0L13.5 9.086 18.586 4H17ZM5 18v3a1 1 0 1 1-2 0v-3a1 1 0 1 1 2 0Zm5-4a1 1 0 1 0-2 0v7a1 1 0 1 0 2 0v-7Zm4 1a1 1 0 0 1 1 1v5a1 1 0 1 1-2 0v-5a1 1 0 0 1 1-1Zm6-4a1 1 0 1 0-2 0v10a1 1 0 1 0 2 0V11Z" fill="#ffffff" /></svg>
+                <span class="text-right">Dashboards</span>
+            </div>
+            @foreach (var link in listaLink.Where(l => l.Categoria == "Dashboard"))
+            {
+                <div class="widget-button1x2">
+                    <button type="button" onclick="window.open('@link.LinkAcesso', '_blank')" class="widget-button1x2">
+                        <div>@link.Nome</div>
+                    </button>
+                </div>
+            }
+        </div>
+        <div class="column">
+            <div class="text-container">
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.25A2.25 2.25 0 0 1 4.25 4h3.956a2.25 2.25 0 0 1 1.438.52l2.381 1.98h5.725A2.25 2.25 0 0 1 20 8.75v.752H6.422a2.25 2.25 0 0 0-2.183 1.705l-1.923 7.7c.043-.171 0 .005 0 0a2.24 2.24 0 0 1-.32-1.158L2 6.25Z" fill="#ffffff" /><path d="M3.745 19.379A.5.5 0 0 0 4.23 20h14.24a1.75 1.75 0 0 0 1.698-1.326l1.763-7.05a.5.5 0 0 0-.485-.622H6.422a.75.75 0 0 0-.728.568L3.745 19.38Z" fill="#ffffff" /></svg>
+                <span class="text-right">Sharepoint</span>
+            </div>
+            @foreach (var link in listaLink.Where(l => l.Categoria == "Repositório"))
+            {
+                <div class="widget-button1x2">
+                    <button type="button" onclick="window.open('@link.LinkAcesso', '_blank')" class="widget-button1x2">
+                        <div>@link.Nome</div>
+                    </button>
+                </div>
+            }
+        </div>
+        <div class="column">
+            <div class="text-container">
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3.05c-.619.632-1 1.496-1 2.45v11A3.5 3.5 0 0 0 5.5 20h7.014c.051-.252.144-.5.28-.736l.73-1.264H5.5A1.5 1.5 0 0 1 4 16.5V7h14v1.254a4.515 4.515 0 0 1 2-.245V5.5c0-.954-.381-1.818-1-2.45V3h-.05a3.489 3.489 0 0 0-2.45-1h-11c-.954 0-1.818.381-2.45 1H3v.05ZM19.212 9a3.496 3.496 0 0 1 .96.044l-1.651 2.858a1.167 1.167 0 1 0 2.02 1.167l1.651-2.859a3.501 3.501 0 0 1-2.975 5.762l-3.031 5.25a1.458 1.458 0 0 1-2.527-1.458l3.026-5.24A3.5 3.5 0 0 1 19.212 9Zm-8.91.243a.75.75 0 0 1-.045 1.06L7.86 12.5l2.397 2.197a.75.75 0 0 1-1.014 1.106l-3-2.75a.75.75 0 0 1 0-1.106l3-2.75a.75.75 0 0 1 1.06.046Zm2.955 6.56 2.02-1.852a4.495 4.495 0 0 1-.008-2.91l-2.012-1.844a.75.75 0 0 0-1.014 1.106L14.64 12.5l-2.397 2.197a.75.75 0 0 0 1.014 1.106Z" fill="#ffffff" /></svg>
+                <span class="text-right">Ferramentas</span>
+            </div>
+            @foreach (var link in listaLink.Where(l => l.Categoria == "Aplicação"))
+            {
+                <div class="widget-button1x2">
+                    <button type="button" onclick="window.open('@link.LinkAcesso', '_blank')" class="widget-button1x2">
+                        <div>@link.Nome</div>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+@code {
+    List<LinksConexao> listaLink = new();
+
+    protected override void OnInitialized()
+    {
+        listaLink.AddRange(new List<LinksConexao>
+        {
+            new LinksConexao { Negocio = "Soybean Pre Found", Categoria = "Dashboard", Nome = "Budget 2024", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/skoLsRshYT?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
+            new LinksConexao { Negocio = "Soybean Pre Found", Categoria = "Dashboard", Nome = "Handoffs", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/8rnDMJd_9d?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
+            new LinksConexao { Negocio = "Soybean Pre Found", Categoria = "Repositório", Nome = "Pasta Raiz", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Soybean%20Pre%20Foundation/Forms/AllItems.aspx" },
+            new LinksConexao { Negocio = "Soybean Pre Found", Categoria = "Aplicação", Nome = "Handoff System", Descricao = "", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=94988011-900f-ee11-8f6d-000d3ab9c00f" },
+           
+        });
+    }
+
+}

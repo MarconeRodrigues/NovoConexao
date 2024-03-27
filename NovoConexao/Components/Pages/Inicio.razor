@@ -1,59 +1,112 @@
 ﻿@page "/"
 @using NovoConexao.Models
 
+
+<video autoplay muted loop class="bgVideo">
+    <source src="/images/bayer-video.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos HTML5.
+</video>
+
 <div class="widget-container">
-    <img src="/images/LogoBayer.png" alt="LogoBayer" style="height: calc(3em + 2.4em); float: left; margin-right: 20px; margin-top: 10px;">
+    <img src="/images/LogoBayer.png" style="height: calc(3em + 2.4em); float: left; margin-right: 20px; margin-top: 10px;">
     <div style="overflow: hidden; margin-left: 10px;">
-        <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.5em; color: #FFFFFF; margin-bottom: 10px; margin-top: 0; text-align: left;">Conexão OEPI</h1>
+        <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.5em; color: #FFFFFF; margin-bottom: 10px; margin-top: 0; text-align: left;">Conexão OE&PI</h1>
         <h3 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.5em; font-weight: lighter; color: #FFFFFF; margin-bottom: 40px; margin-top: 0; text-align: left;">Produção de Soja e Algodão Latam</h3>
     </div>
 
-    <!-- Grupos de Registros -->
-    @foreach (var categoria in listaLink.Select(l => l.Categoria).Distinct())
-    {
-        <div class="categoria-container">
-            <h3 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.5em; font-weight: lighter; color: #FFFFFF; margin-bottom: 20px; margin-top: 0; text-align: left;">@categoria</h3>
-            <div class="widget-row" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 20px;">
-                @foreach (var link in listaLink.Where(l => l.Categoria == categoria))
-                {
-                    <div class="widget-item" style="width: 100%; height: 100%;">
-                        <button type="button" onclick="window.open('@link.LinkAcesso', '_blank')" class="widget-button" style="width: 100%; height: 100%; margin: 0;">
-                            <div class="negocio">@link.Negocio</div>
-                            <div class="nome">@link.Nome</div>
-                            <div class="descricao">@link.Descricao</div>
-                            <span class="link-acesso">Acessar</span>
-                        </button>
+    <!-- Grupos de Registros Negocio -->
+    <div class="text-container">
+        <span class="text-left">/////</span>
+        <span class="text-right">Negócios</span>
+    </div>
+    <div class="grid-main" style="margin-bottom:40px">
+        @foreach (var negocio in listaNegocio)
+        {
+            <div class="widget-button-negocio">
+                <button type="button" onclick="window.location.href = '@negocio.UrlText'" class="widget-button-negocio">
+                    <div class="div-imagem">
+                        <img src="@($"{negocio.IconNegocio}")" alt="@negocio.NameNegocio">
                     </div>
-                }
+                </button>
             </div>
-            <hr style="border-top: 1px solid #FFFFFF;">
+        }
+    </div>
+
+</div>
+<!-- Grupos de Registros Links -->
+
+<div class="text-container">
+    <span class="text-left">/////</span>
+    <span class="text-right">Links Úteis</span>
+</div>
+<div class="grid-main-links">
+    @foreach (var link in listaLink.Where(l => l.Categoria == "Link"))
+    {
+        <div class="widget-button1x1">
+            <button type="button" onclick="window.open('@link.LinkAcesso', '_blank')" class="widget-button1x1">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.25 4.75a1.5 1.5 0 0 0-1.5 1.5v11.5a1.5 1.5 0 0 0 1.5 1.5h11.5a1.5 1.5 0 0 0 1.5-1.5v-4a1 1 0 1 1 2 0v4a3.5 3.5 0 0 1-3.5 3.5H6.25a3.5 3.5 0 0 1-3.5-3.5V6.25a3.5 3.5 0 0 1 3.5-3.5h4a1 1 0 1 1 0 2h-4Zm6.5-1a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v6.5a1 1 0 1 1-2 0V6.164l-4.793 4.793a1 1 0 1 1-1.414-1.414l4.793-4.793H13.75a1 1 0 0 1-1-1Z" fill="#ffffff" /></svg>
+                <div>@link.Nome</div>
+            </button>
+
         </div>
+
+
     }
 </div>
 
+<div class="footer-text">
+    <h3>Desenvolvido por OE&PI</h3>
+</div>
+
+
 @code {
+    List<Negocio> listaNegocio = new();
+    List<MuralAvisos> listaAvisos = new();
     List<LinksConexao> listaLink = new();
 
     protected override void OnInitialized()
     {
+        listaNegocio.AddRange(new List<Negocio>
+        {
+            new Negocio { NameNegocio = "Soybean Production", UrlText = "/SoybeanProduction", IconNegocio = "images/SoyFoundation.png"},
+            new Negocio { NameNegocio = "Soybean Pre Found", UrlText = "/SoybeanPreFound" , IconNegocio = "images/SoyPreFound.png"},
+            new Negocio { NameNegocio = "Cotton Production", UrlText = "/CottonProduction", IconNegocio = "images/Cotton.png"},
+            new Negocio { NameNegocio = "OEPI", UrlText = "/OEPI", IconNegocio = "images/OEPI.png"},
+
+        });
+
+        listaAvisos.AddRange(new List<MuralAvisos>
+        {
+            new MuralAvisos { Titulo = "Aviso 1", ImagemUrl = "/images/aviso1.jpg", Descricao = "Descrição do aviso 1" },
+
+        });
+
         listaLink.AddRange(new List<LinksConexao>
         {
-            new LinksConexao { Negocio = "Soy & Cotton Production", Categoria = "Dashboard", Nome = "Power BI Soy & Cotton Prod", Descricao = "Aplicação Power BI com todos os dashboards ativos do time de Produção de Soja e Algodão Latam", LinkAcesso = "https://app.powerbi.com/groups/a5a25888-be4f-4387-8415-3d636e7e4938/reports/5a1360f5-efec-48b8-85f0-da7d12e0ee1c/ReportSection6075ec0d6b260e646f11?experience=power-bi" },
-            new LinksConexao { Negocio = "Soy Foundation", Categoria = "Repositório", Nome = "Soy FND Sharepoint", Descricao = "Repositório de arquivos oficial do time de produção de soja comercial.", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Soybean%20Production/Forms/AllItems.aspx" },
-            new LinksConexao { Negocio = "Soy Pre Found", Categoria = "Repositório", Nome = "Soy Pre Found Sharepoint", Descricao = "Repositório de arquivos oficial do time de produção de soja pré-comercial.", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Soybean%20Pre%20Foundation/Forms/AllItems.aspx" },
-            new LinksConexao { Negocio = "Cotton MFG", Categoria = "Repositório", Nome = "Cotton MFG Sharepoint", Descricao = "Repositório de arquivos oficial do time de manufatura de algodão", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Cotton%20Operations/Forms/AllItems.aspx" },
-            new LinksConexao { Negocio = "OEPI", Categoria = "Repositório", Nome = "OEPI Sharepoint", Descricao = "Repositório de arquivos oficial do time de OEPI.", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Process%20Optimization/Forms/AllItems.aspx" },
-            new LinksConexao { Negocio = "Soy & Cotton Leardship", Categoria = "Repositório", Nome = "S&C Leardship Sharepoint", Descricao = "Repositório de arquivos oficial do time de liderança de Soja e Algodão Latam", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Leadership/Forms/AllItems.aspx" },
-            new LinksConexao { Negocio = "Soy Foundation", Categoria = "Aplicação", Nome = "GMS", Descricao = "Aplicação para coleta de dados dos multiplicadores, plantio e colheita.", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=99acaefc-b058-ee11-be6f-000d3ab6325b&forceUCI=1&pagetype=custom&name=cr05a_homegms3_3b985" },
-            new LinksConexao { Negocio = "Cotton MFG", Categoria = "Aplicação", Nome = "Cotton Operations Tools", Descricao = "Sistema de gestão operacional da produção de algodão", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=3762f5b2-77ac-ed11-aad0-0022489fd473" },
-            new LinksConexao { Negocio = "Soy Pre Found", Categoria = "Aplicação", Nome = "Handoff System", Descricao = "Solicitação de Handoff de sementes de soja pré-comercial", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=94988011-900f-ee11-8f6d-000d3ab9c00f" },
-            new LinksConexao { Negocio = "Soy & Cotton Production", Categoria = "Aplicação", Nome = "Assistente de Compras", Descricao = "Ferramenta para solicitações de RC's para todos os negócios do time", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=b55b58f0-4dbf-ed11-83ff-0022489fd473&pagetype=entitylist&etn=cr05a_scacrequisicaocompras&viewid=7dc217b2-e18e-4557-a43a-9842c560b0d7&viewType=1039" },
-            new LinksConexao { Negocio = "Soy & Cotton Production", Categoria = "Aplicação", Nome = "Calendário de Eventos", Descricao = "Cadastramentos de eventos operacionais de todos os negócios", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=b55b58f0-4dbf-ed11-83ff-0022489fd473&pagetype=entitylist&etn=cr05a_oepicalendariodeeventos&viewid=3da60115-3b2d-400e-9499-b8158a8c5f95&viewType=1039" },
-            new LinksConexao { Negocio = "Soy & Cotton Production", Categoria = "Aplicação", Nome = "Asset Track", Descricao = "Gerenciador do ativos mobilizados entregues aos usuários de campo", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=b55b58f0-4dbf-ed11-83ff-0022489fd473&pagetype=entitylist&etn=cr05a_oepidadosativos&viewid=7319cff1-6eb0-4adc-a4e9-a2881ac018a5&viewType=1039" },
-            new LinksConexao { Negocio = "Soy & Cotton Production", Categoria = "Aplicação", Nome = "Scorecard System", Descricao = "Ferramenta para coleta de metricas e indicadores do Scorecard dos times", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=b55b58f0" },
-            new LinksConexao { Negocio = "Soy Foundation", Categoria = "Aplicação", Nome = "Multisoja", Descricao = "Sistema de criação de lotes de beneficiamento de semente de soja comercial.", LinkAcesso = "https://multisojabayer.com/" },
-            new LinksConexao { Negocio = "Soy Foundation", Categoria = "Aplicação", Nome = "Multisite", Descricao = "Sistema para gestão da precificação de Soja comercial e envio de notas pelos multiplicadores", LinkAcesso = "https://multisitesoja.velocity-np.ag/" }
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "GIMS Intelex", Descricao = "", LinkAcesso = "https://clients.intelex.com/Login3/Monsanto/" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "MyDoc", Descricao = "", LinkAcesso = "https://mydoc.bayer.biz/cara/index.jsp" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "IT4You", Descricao = "", LinkAcesso = "https://bayersi.service-now.com/sp?id=index" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "PS Learning", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/020693/SitePages/Inicio.aspx" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Go Learn", Descricao = "", LinkAcesso = "https://eu.degreed.com/dguser4x4o2z7/dashboard/discover" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "MOC", Descricao = "", LinkAcesso = "https://bayergroupus.sharepoint.com/sites/006954/MOC/default.html" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "SIGEF", Descricao = "", LinkAcesso = "https://sistemasweb.agricultura.gov.br/sigef/#consultaAutenticidade" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Media Pool", Descricao = "", LinkAcesso = "https://identitynet.bayer.com/portal/signin?redirect=%2F" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Web Access", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/HowITWorks/SitePages/it-support-and-ordering/web-access-for-private-devices.aspx" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Engineering Portal", Descricao = "", LinkAcesso = "https://bayergroupus.sharepoint.com/sites/007728/PortalEng/PortalEng.html" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "MyBenefits", Descricao = "", LinkAcesso = "https://ssl2.perquisite.net/RewardCentre/M/RC#/Home" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Dashboard SSHE", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/027424/SitePages/HomePage.aspx?xsdata=MDV8MDF8fDM1YmEwMmM1NDUwOTRhMDM5MWUyMDhkYjVhYjlhYTk2fGZjYjJiMzdiNWRhMDQ2NmI5YjgzMDAxNGI2N2E3Yzc4fDB8MHw2MzgyMDM1MjU2ODA1MDEyMTh8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxMMk5vWVhSekx6RTVPbTFsWlhScGJtZGZUVVJPYlUxdFdUVlpha1YwV20xRk5FNURNREJPUjAwd1RGUnJNMXBVUlhSTlIwMTNUMGRaZVZwSFRYZE5hbU0xUUhSb2NtVmhaQzUyTWk5dFpYTnpZV2RsY3k4eE5qZzBOelUxTnpZM05qTTB8YzU2ZTJlN2VlZTViNGNjYTkxZTIwOGRiNWFiOWFhOTZ8ZTRlNzNhNzEzNmNhNDg3ZTg5NTAxNjBlNzU3YmVkYzA%3D&sdata=MnU2TjVwaXRZRURxSE1rSDUvMWRqK2UwM2xTYzlNeFVJeVFUVFBqN1BOUT0%3D&ovuser=fcb2b37b-5da0-466b-9b83-0014b67a7c78%2Ccamila.grassmann%40bayer.com&OR=Teams-HL&CT=1684756096033&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA0MDIwMjcwNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Bayer +Valor", Descricao = "", LinkAcesso = "https://maisvalor.bayer.com.br/Account/LogOn?returnUrl=%2F" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "My Services", Descricao = "", LinkAcesso = "https://myservicesprod.launchpad.cfapps.eu20.hana.ondemand.com/site#Shell-home" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "AskHR", Descricao = "", LinkAcesso = "https://bayersi.service-now.com/efservices" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Concur", Descricao = "", LinkAcesso = "https://us2.concursolutions.com/home.asp" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Treinamentos", Descricao = "", LinkAcesso = "https://trainingcropscience.velocity.ag/" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Prima", Descricao = "", LinkAcesso = "https://prima4pwp.bayer-ag.com/identitymanagement/aspx/requests/MyRequests.aspx" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "GUMS", Descricao = "", LinkAcesso = "https://by-gums.bayer-ag.com/dashboard.aspx" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Dashboard Condutor de Veículo", Descricao = "", LinkAcesso = "https://app.powerbi.com/view?r=eyJrIjoiYTIzYzRlOWUtMjZkZC00MWI2LTgxMTUtNjUwMGQyYWE5YjYxIiwidCI6ImYwNDE4MGM5LWY4YmQtNGQyOC05N2RkLThkMDBjYWNjZjYyZSJ9" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Acessos SAP", Descricao = "", LinkAcesso = "https://accessbuddy-p.intranet.cnb/chat.html" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "CLMS", Descricao = "", LinkAcesso = "https://clms.intranet.cnb/PreSigning/Home/" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "Tracc", Descricao = "", LinkAcesso = "https://platform.traccsolution.com/pt/ad67da2a-8e5f-49f8-8b35-44dfb3dfd201" },
+            new LinksConexao { Negocio = "OEPI", Categoria = "Link", Nome = "MyAccess", Descricao = "", LinkAcesso = "https://myaccess.microsoft.com/@bayergroup.onmicrosoft.com#/overview" },
         });
     }
-
 }
