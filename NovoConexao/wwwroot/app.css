@@ -326,9 +326,9 @@ html::before {
         font-family: 'Segoe UI', Arial, sans-serif;
         font-size: 1em;
         font-weight: lighter;
-        font-style: italic;
         color: #FFFFFF;
         margin-top: 0px;
-        margin-left: 30px;
         text-align: left;
+        margin-left:30px;
+        font-style:italic;
     }
