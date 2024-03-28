@@ -318,8 +318,7 @@ html::before {
     position: fixed;
     bottom: 0;
     right: 0;
-    margin-bottom: 0px;
-    margin-left:20px;
+    margin-left: 20px;
     width: 100%;
 }
 
@@ -327,10 +326,9 @@ html::before {
         font-family: 'Segoe UI', Arial, sans-serif;
         font-size: 1em;
         font-weight: lighter;
-        font-style:italic;
+        font-style: italic;
         color: #FFFFFF;
         margin-top: 0px;
-        margin-left:30px;
+        margin-left: 30px;
         text-align: left;
-
     }
