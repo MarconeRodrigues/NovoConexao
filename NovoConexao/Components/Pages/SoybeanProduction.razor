@@ -18,9 +18,6 @@
         </svg>
     </div>
 
-
-
-
     <!-- Grupos de Registros -->
     <div class="grid-main-nome">
         <div class="column">
@@ -72,30 +69,32 @@
 @code {
     List<LinksConexao> listaLink = new();
 
-    protected override void OnInitialized()
-    {
-        listaLink.AddRange(new List<LinksConexao>
+    protected override void OnInitialized() => listaLink.AddRange(new List<LinksConexao>
         {
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Season Dashboard 23-24", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/o_Zne2aN7L?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=0538f29f-6915-4c35-b5d6-c3a9f7fc9179" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Budget", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/0HVqvV4PPm?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=700e0247-3081-4d89-b963-0a36480a33ee" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Dados Históricos de Qualidade", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/tPl2cYWCHS?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Multi+", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/2tQlnYa3C-?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=2e93dea8-61bb-4d42-b9ab-7a7d3c01abe4" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "SoyMap", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/QRGojHCP0y?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=0cf76dc5-3ea0-4b91-8b42-e704f2646987" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Projeto Vitrine Agroeste", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/NIPC5hl10A?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Docs ISO", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/0oEkBBdC9Y?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=d224145c-970c-42c4-a42d-4929510cd9c9" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Seleciona+", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/hcTGaOZqK4?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=b996a860-9d11-43dc-8896-5073bb07e98a" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Geração de Demanda", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/zBoNL7C-9B?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "Pasta Raiz", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Soybean%20Production/Forms/AllItems.aspx" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Aplicação", Nome = "DocuSign", Descricao = "", LinkAcesso = "https://account.docusign.com/" },
             new LinksConexao { Negocio = "Soybean Production", Categoria = "Aplicação", Nome = "GMS", Descricao = "", LinkAcesso = "https://org95d29a28.crm4.dynamics.com/main.aspx?appid=99acaefc-b058-ee11-be6f-000d3ab6325b&forceUCI=1&pagetype=custom&name=cr05a_homegms3_3b985" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Aplicação", Nome = "Multisoja", Descricao = "", LinkAcesso = "https://multisojabayer.com/" },
             new LinksConexao { Negocio = "Soybean Production", Categoria = "Aplicação", Nome = "Multisite", Descricao = "", LinkAcesso = "https://multisitesoja.velocity-np.ag/" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Aplicação", Nome = "Multisoja", Descricao = "", LinkAcesso = "https://multisojabayer.com/" },
             new LinksConexao { Negocio = "Soybean Production", Categoria = "Aplicação", Nome = "TiFlux", Descricao = "", LinkAcesso = "https://central.tiflux.com.br/v/" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Internalização", Descricao = "", LinkAcesso = "https://app.powerbi.com/groups/me/reports/66c0c070-c342-4c33-b8ee-20d8d9e1f548/ReportSection?experience=power-bi" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Budget", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/0HVqvV4PPm?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=700e0247-3081-4d89-b963-0a36480a33ee" },
             new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Complaints Care", Descricao = "", LinkAcesso ="https://app.powerbi.com/groups/me/apps/add2cb42-4c94-479a-8878-10003041148b/reports/073da8e6-dd8c-446e-a95c-9a57d592f4fa/ReportSection?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&experience=power-bi" },
-            new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "ZDT", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/:f:/r/sites/035770/SC%20Soybean%20Production/Desempenho%20Ambiental/ZDT?csf=1&web=1&e=bMT2xj" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Dados Históricos de Qualidade", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/tPl2cYWCHS?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Docs ISO", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/0oEkBBdC9Y?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=d224145c-970c-42c4-a42d-4929510cd9c9" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Geração de Demanda", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/zBoNL7C-9B?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Internalização", Descricao = "", LinkAcesso = "https://app.powerbi.com/groups/me/reports/66c0c070-c342-4c33-b8ee-20d8d9e1f548/ReportSection?experience=power-bi" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Multi+", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/2tQlnYa3C-?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=2e93dea8-61bb-4d42-b9ab-7a7d3c01abe4" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Projeto Vitrine Agroeste", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/NIPC5hl10A?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Requisitos Legais", Descricao = "", LinkAcesso = "https://app.powerbi.com/Redirect?action=OpenReport&appId=add2cb42-4c94-479a-8878-10003041148b&reportObjectId=859a4734-0946-4f6c-8e73-7ffb832889c3&ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&reportPage=ReportSection8a4d9324d07b0e30c830&pbi_source=appShareLink&portalSessionId=e8f349c8-5877-407d-821a-a7c04caa04b0" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Season Dashboard 23-24", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/o_Zne2aN7L?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=0538f29f-6915-4c35-b5d6-c3a9f7fc9179" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "Seleciona+", Descricao = "", LinkAcesso ="https://app.powerbi.com/links/hcTGaOZqK4?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=b996a860-9d11-43dc-8896-5073bb07e98a" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Dashboard", Nome = "SoyMap", Descricao = "", LinkAcesso = "https://app.powerbi.com/links/QRGojHCP0y?ctid=fcb2b37b-5da0-466b-9b83-0014b67a7c78&pbi_source=linkShare&bookmarkGuid=0cf76dc5-3ea0-4b91-8b42-e704f2646987" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "Pasta Raiz", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/035770/SC%20Soybean%20Production/Forms/AllItems.aspx" },
             new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "CP001", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/:f:/r/sites/035770/SC%20Soybean%20Production/Plano%20de%20Produ%C3%A7%C3%A3o/Planilhas%20de%20Produ%C3%A7%C3%A3o?csf=1&web=1&e=oNrsIJ" },
             new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "Contratos", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/:f:/r/sites/035770/SC%20Soybean%20Production/Plano%20de%20Produ%C3%A7%C3%A3o/Planilhas%20de%20Produ%C3%A7%C3%A3o?csf=1&web=1&e=oNrsIJ" },
-        });
-    }
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "Dados de Qualidade", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/:x:/r/sites/035770/_layouts/15/Doc.aspx?sourcedoc=%7B25444DF6-5787-4FFE-995D-3DDE193ABEF0%7D&file=CPB-SCM-000212%20%E2%80%93%20Resultados%20Gerais%20de%20Qualidade%20Pre-Foundation%202024.xlsx&action=default&mobileredirect=true" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "Termos e Atestados", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/sites/024619" },
+            new LinksConexao { Negocio = "Soybean Production", Categoria = "Repositório", Nome = "ZDT", Descricao = "", LinkAcesso = "https://bayergroup.sharepoint.com/:f:/r/sites/035770/SC%20Soybean%20Production/Desempenho%20Ambiental/ZDT?csf=1&web=1&e=bMT2xj" }
+
+    });
 
 }
