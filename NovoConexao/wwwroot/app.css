@@ -269,24 +269,6 @@ html::before {
         cursor: pointer;
     }
 
-.footer-text {
-    position: fixed;
-    bottom: 0; 
-    right: 0;
-    margin-bottom: 0px;
-    margin-right: 10px;
-    width: 100%;
-}
-
-    .footer-text h3 {
-        font-family: 'Segoe UI', Arial, sans-serif;
-        font-size: 1em;
-        font-weight: lighter;
-        color: #FFFFFF;
-        margin-top: 0px;
-        text-align: right;
-    }
-
 .text-container {
     display: flex; 
     justify-content: start; 
@@ -314,13 +296,32 @@ html::before {
     text-align: start;
 }
 
-.footer-text-left {
-    position: fixed;
+.footer-text {
+    position:fixed;
     bottom: 0;
     right: 0;
-    margin-left: 20px;
+    margin-bottom: 0px;
+    margin-right: 10px;
     width: 100%;
 }
+
+    .footer-text h3 {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 1em;
+        font-weight: lighter;
+        color: #FFFFFF;
+        margin-top: 0px;
+        text-align: right;
+    }
+
+.footer-text-left {
+    margin-top: auto;
+    margin-left: 20px;
+    width: 100%;
+    text-align: right; /* Alinha o texto à direita, já que você estava usando `right: 0` */
+    padding-bottom: 20px; /* Ajusta o espaço entre o texto e o final da página */
+}
+
 
     .footer-text-left h3 {
         font-family: 'Segoe UI', Arial, sans-serif;
